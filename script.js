@@ -1,11 +1,18 @@
 clickBtn = document.querySelector("button");
-clickBtn.addEventListener("click", changeColor);
-hexColor = document.querySelector('h1');
-colors = ["#a5c5d9", "#c7d9a5", '#942942', '#a15f5f', '#451c3d', '#d1d1d1', '#e6b8d2', '#d6223d', '#ad5100'];
+clickBtn.addEventListener("click", getHexColor);
 
-function changeColor() {
-  randomColor = Math.floor(Math.random() * colors.length);
-  document.body.style.backgroundColor = colors[randomColor];
-  hexColor.innerHTML = `The HEX ID is ${colors[randomColor]}`;
-}
+//Creating an array with all the possible HEX Elements.
+hexElements = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'f'];
+function getHexColor() {
+  //Setting the variable # after which looped elements will be added
+  let hexColor = "#";
+  //Looping 6 times through 6 random elements from an array. 
+  for (let i = 0; i < 6; i++) {
+    //Getting a random element(From array Hex Elements at position of [randomnumber]) and +=(adding) it each of the 6 times to the variable hexColor
+    hexColor += hexElements[Math.floor(Math.random() * hexElements.length)];
+    //Changin the background color and h1 value
+    document.body.style.backgroundColor = hexColor;
+    document.querySelector('h1').innerHTML = `This HEX Color ID is ${hexColor}`;
+  };
+};
 
